@@ -235,7 +235,7 @@ public class CIServerTests extends ConsoleProgram
         dup.addParam(CISConstants.ORDER_ID_PARAM, "okn90"); //steak lunch that already exists
         dup.addParam(CISConstants.ITEM_ID_PARAM, "6a6a"); //steak lunch
         dup.addParam(CISConstants.ORDER_TYPE_PARAM, "lunch"); //steak lunch
-        success = runTest(d33, true, "error");
+        success = runTest(dup, true, "error");
         total++;
         if (success)
         {
@@ -327,6 +327,17 @@ public class CIServerTests extends ConsoleProgram
         }
 
         //GET_CART is tests by students.
+        println("=== GET CART ===\n");
+        Request p1 = new Request(CISConstants.GET_CART);
+        p1.addParam(CISConstants.USER_ID_PARAM, "abcd");
+        String itemString5 = "orders=Order{itemID='6a6a', type='lunch', orderID='okn90'}";
+        success = runTest(p1, false, itemString5);
+        total++;
+        if (success)
+        {
+            passed++;
+        }
+
 
         println("=== INVALID COMMANDS ===\n");
 
